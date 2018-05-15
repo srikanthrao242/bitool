@@ -9,7 +9,7 @@ import org.specs2.runner._
 /**
  * Sample specification.
  * 
- * This specification can be executed with: scala -cp <your classpath=""> ${package}.SpecsTest
+ * This specification can be executed with: scala -cp <your classpath=""> ${MessageTypes}.SpecsTest
  * Or using maven: mvn test
  *
  * For more information on how to write or run specifications, please visit: 
@@ -17,10 +17,10 @@ import org.specs2.runner._
  *
  */
 @RunWith(classOf[JUnitRunner])
-class MySpecTest extends Specification {
+class specs extends Specification {
   "The 'Hello world' string" should {
     "contain 11 characters" in {
-      "Hello world" must have size(11)
+      "Hello world" must have size 11
     }
     "start with 'Hello'" in {
       "Hello world" must startWith("Hello")

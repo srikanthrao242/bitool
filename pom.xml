@@ -28,8 +28,96 @@
       <artifactId>scala-library</artifactId>
       <version>${scala.version}</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.scala-lang/scala-reflect -->
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-reflect</artifactId>
+      <version>${scala.version}</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.typesafe.akka/akka-http -->
+    <dependency>
+      <groupId>com.typesafe.akka</groupId>
+      <artifactId>akka-http_2.12</artifactId>
+      <version>10.1.1</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.typesafe.akka/akka-slf4j -->
+    <dependency>
+      <groupId>com.typesafe.akka</groupId>
+      <artifactId>akka-slf4j_2.12</artifactId>
+      <version>2.5.12</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.typesafe.akka/akka-stream -->
+    <dependency>
+      <groupId>com.typesafe.akka</groupId>
+      <artifactId>akka-stream_2.12</artifactId>
+      <version>2.5.12</version>
+    </dependency>
 
-    <!-- Test -->
+    <!-- https://mvnrepository.com/artifact/com.typesafe.akka/akka-http-testkit -->
+    <dependency>
+      <groupId>com.typesafe.akka</groupId>
+      <artifactId>akka-http-testkit_2.12</artifactId>
+      <version>10.1.1</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.softwaremill.macwire/macros -->
+    <dependency>
+      <groupId>com.softwaremill.macwire</groupId>
+      <artifactId>macros_2.12</artifactId>
+      <version>2.3.1</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.softwaremill.macwire/macrosakka -->
+    <dependency>
+      <groupId>com.softwaremill.macwire</groupId>
+      <artifactId>macrosakka_2.12</artifactId>
+      <version>2.3.1</version>
+    </dependency>
+
+
+
+
+
+    <!-- https://mvnrepository.com/artifact/org.scalafx/scalafx -->
+    <dependency>
+      <groupId>org.scalafx</groupId>
+      <artifactId>scalafx_${scala.compat.version}</artifactId>
+      <version>8.0.144-R12</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.scalafx/scalafxml-core-sfx8 -->
+    <dependency>
+      <groupId>org.scalafx</groupId>
+      <artifactId>scalafxml-core-sfx8_${scala.compat.version}</artifactId>
+      <version>0.4</version>
+    </dependency>
+      <!-- https://mvnrepository.com/artifact/com.typesafe.config/config -->
+      <dependency>
+          <groupId>com.typesafe</groupId>
+          <artifactId>config</artifactId>
+          <version>1.3.2</version>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/org.scala-lang.modules/scala-async -->
+      <dependency>
+          <groupId>org.scala-lang.modules</groupId>
+          <artifactId>scala-async_${scala.compat.version}</artifactId>
+          <version>0.9.7</version>
+      </dependency>
+
+      <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-core -->
+      <dependency>
+          <groupId>org.apache.spark</groupId>
+          <artifactId>spark-core_2.11</artifactId>
+          <version>2.3.0</version>
+      </dependency>
+
+      <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-sql -->
+      <dependency>
+          <groupId>org.apache.spark</groupId>
+          <artifactId>spark-sql_2.11</artifactId>
+          <version>2.3.0</version>
+      </dependency>
+
+
+      <!-- Test -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -49,6 +137,14 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+  <repositories> <!-- necessary for macro-paradise plugin -->
+    <repository>
+      <id>oss.sonatype.org</id>
+      <name>sonatype sapshots</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </repository>
+  </repositories>
 
   <build>
     <sourceDirectory>src/main/scala</sourceDirectory>
@@ -71,6 +167,13 @@
                 <arg>-dependencyfile</arg>
                 <arg>${project.build.directory}/.scala_dependencies</arg>
               </args>
+                <compilerPlugins>
+                    <compilerPlugin>
+                        <groupId>org.scalamacros</groupId>
+                        <artifactId>paradise_${scala.version}</artifactId>
+                        <version>2.1.0</version>
+                    </compilerPlugin>
+                </compilerPlugins>
             </configuration>
           </execution>
         </executions>
