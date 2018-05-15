@@ -3,7 +3,7 @@ package org.com.bitool.UI
 import java.util.concurrent.atomic.AtomicLong
 import java.util.concurrent.{ExecutorService, Executors, ThreadFactory}
 
-import com.bitool.com.MessageTypes.REQUEST
+import org.com.bitool.REQUEST
 import org.com.bitool.server.Router
 
 import scala.collection.mutable
